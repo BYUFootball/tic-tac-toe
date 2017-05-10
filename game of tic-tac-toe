@@ -1,16 +1,41 @@
+
 class Board:
     def __init__(self):
-        self.ba = "?"
-        self.bb = "?"
-        self.bc = "?"
-        self.bd = "?"
-        self.be = "?"
-        self.bf = "?"
-        self.bg = "?"
-        self.bh = "?"
-        self.bi = "?"
-     
+        self.ba = "1"
+        self.bb = "2"
+        self.bc = "3"
+        self.bd = "4"
+        self.be = "5"
+        self.bf = "6"
+        self.bg = "7"
+        self.bh = "8"
+        self.bi = "9"
+        
+    def change (self, target, where):
+        if where == "1":
+            self.ba = target
+        if where == "2":
+            self.bb = target
+        if where == "3":
+            self.bc = target
+        if where == "4":
+            self.bd = target
+        if where == "5":
+            self.be = target
+        if where == "6":
+            self.bf = target
+        if where == "7":
+            self.bg = target
+        if where == "8":
+            self.bh = target
+        if where == "9":
+            self.bi = target
+
+            
+            
     def draw (self):
+        print ""
+        print "             "
         print "      |     |"  
         print "   "+ self.ba + "  |  "  + self.bb + "  |  "+self.bc
         print " _____|_____|_____"
@@ -22,4 +47,19 @@ class Board:
         print "      |     |"
         
 theBoard = Board()
-theBoard.draw()  
+
+
+def get_input ():
+    number = raw_input("Pick a square: ") 
+    number = number[0]
+    if(number > '0' and number <= '9'):
+        return number
+    return get_input()
+
+
+theBoard.draw()
+while(1):
+    theBoard.change("x", get_input())
+    theBoard.draw()
+    theBoard.change("o", get_input())
+    theBoard.draw()
