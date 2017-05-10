@@ -1,1 +1,25 @@
-
+class Board:
+    def __init__(self):
+        self.ba = "?"
+        self.bb = "?"
+        self.bc = "?"
+        self.bd = "?"
+        self.be = "?"
+        self.bf = "?"
+        self.bg = "?"
+        self.bh = "?"
+        self.bi = "?"
+     
+    def draw (self):
+        print "      |     |"  
+        print "   "+ self.ba + "  |  "  + self.bb + "  |  "+self.bc
+        print " _____|_____|_____"
+        print "      |     | "
+        print "   "+ self.bd + "  |  "  + self.be + "  |  "+self.bf 
+        print " _____|_____|____"
+        print "      |     | "
+        print "   "+ self.bg + "  |  "  + self.bh + "  |  "+self.bi      
+        print "      |     |"
+        
+theBoard = Board()
+theBoard.draw()  
