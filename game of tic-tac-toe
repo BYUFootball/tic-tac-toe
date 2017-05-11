@@ -7,9 +7,25 @@ class Board:
         self.bd = "4"
         self.be = "5"
         self.bf = "6"
-        self.bg = "7"
+        self.bg = "7" 
         self.bh = "8"
         self.bi = "9"
+        
+    def is_won (self, player):
+        return (
+            self.is_win(self.ba,self.bb,self.bc,player) or
+            self.is_win(self.bd,self.be,self.bf,player)or
+            self.is_win(self.bg,self.bh,self.bi,player)or
+            self.is_win(self.ba,self.bd,self.bg,player)or
+            self.is_win(self.bb,self.be,self.bh,player)or
+            self.is_win(self.bc,self.bf,self.bi,player)or
+            self.is_win(self.bc,self.be,self.bg,player)or
+            self.is_win(self.ba,self.be,self.bi,player))
+    
+    def is_win (self,square1,square2,square3,target):
+        if square1 == target and square2 == target and square3  == target:
+            return 1
+        return 0    
         
     def change (self, target, where):
         if where == "1":
@@ -60,6 +76,12 @@ def get_input ():
 theBoard.draw()
 while(1):
     theBoard.change("x", get_input())
+    if theBoard.is_won("x"):
+        print "x wins"
+        break
     theBoard.draw()
     theBoard.change("o", get_input())
+    if theBoard.is_won("o"):
+        print "o wins"
+        break
     theBoard.draw()
